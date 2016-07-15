@@ -6,9 +6,10 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"clean": "rm -rf lib/*",
-		"browserify": "browserify index.js --debug | exorcist index.bundle.js.map > index.bundle.js",
-		"uglify": "uglifyjs index.bundle.js --compress --mangle --in-source-map index.bundle.js.map --source-map index.bundle.min.js.map > index.bundle.min.js",
-		"babel": "babel --source-maps --presets es2015,react -d ./ src/"
+		"babel": "babel --source-maps --presets es2015,react -d ./lib/ src/",
+		"browserify": "browserify lib/index.js --debug | exorcist lib/index.bundle.js.map > lib/index.bundle.js",
+		"uglify": "uglifyjs lib/index.bundle.js --compress --mangle --in-source-map lib/index.bundle.js.map --source-map lib/index.bundle.min.js.map > lib/index.bundle.min.js",
+		"all": "npm run clean && npm run babel && npm run browserify && npm run uglify"
 	},
 	"author": "",
 	"license": "ISC",
